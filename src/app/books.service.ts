@@ -8,7 +8,9 @@ export class BooksService {
 
   constructor(private http: HttpClient) { }
 
-  baseUri: string = "http://localhost:3000/"
+  // baseUri: string = "http://localhost:3000/"
+
+  baseUri: string = "https://library-app-backend-assig2.herokuapp.com/"
 
   getBooks() {
     return this.http.get(this.baseUri);

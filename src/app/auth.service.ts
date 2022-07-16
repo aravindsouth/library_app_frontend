@@ -6,7 +6,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AuthService {
 
-  baseUri: string = "http://localhost:3000/"
+  // baseUri: string = "http://localhost:3000/"
+  baseUri: string = "https://library-app-backend-assig2.herokuapp.com/"
 
   constructor(private http: HttpClient) { }
 
