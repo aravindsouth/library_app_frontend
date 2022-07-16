@@ -1,0 +1,85 @@
+<!--Navbar-->
+<div style="margin-bottom: 20px;">
+<header class="page-header">
+    <nav class="navbar navbar-expand-lg navbar-dark primary-color fixed-top">
+        <!-- Navbar brand -->
+        <a class="navbar-brand" routerLink="/books" style="margin-left: 10px;">Full Stack Dev</a>
+  
+        <!-- Collapse button -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#basicExampleNav"
+          aria-controls="basicExampleNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+          <!-- Links -->
+          <!-- <div class="ml-auto mr-auto text-center"> 
+           <h3 class="userstyle "> Welcome {{ username }} ! </h3>
+          </div> -->
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" routerLink="/books" routerLinkActive="active">Books
+              </a>
+            </li>
+            
+            <li class="nav-item active">
+              <a class="nav-link" routerLink="/addbook" routerLinkActive="active"
+                >Add Book
+              </a>
+            </li>
+            
+            <li class="nav-item active">
+              <!-- <a class="nav-link" routerLink="/login" routerLinkActive="active"
+                >Log In
+              </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link">Sign Up</a>
+            </li> -->
+            <li class="nav-item active">
+              <a class="nav-link" style="cursor:pointer" (click)="logoutUser()">Logout</a>
+            </li>
+          </ul>
+          <!-- Links -->
+        </div>
+        <!-- Collapsible content -->
+      </nav>
+      <!--Navbar-->
+  
+</header>
+</div>
+<!--Navbar end-->
+
+<!-- Books body -->
+<div style="margin: 20%;">
+  <div style="border-radius: 15px; border: 2px solid rgb(221, 213, 207); padding: 5%; background-color: aliceblue;">
+      <div>
+        <form [formGroup]="newBookForm" (ngSubmit)="onSubmit(newBookForm.value)">
+          <label>Book Name</label>
+          <br>
+          <textarea rows="2" cols="45" formControlName="title"></textarea>
+          <div *ngIf="!newBookForm.get('title')!.valid" style="font-size: 12px; color: red">character limit exceeded</div>
+          <br>
+          <label>Author</label>
+          <br>
+          <textarea rows="2" cols="45" formControlName="author">Maximum 50 characters</textarea>
+          <div *ngIf="!newBookForm.get('author')!.valid" style="font-size: 12px; color: red">character limit exceeded</div>
+          <br>
+          <label>About the book</label>
+          <br>
+          <textarea rows="8" cols="45" formControlName="about">Maximum 250 characters</textarea>
+          <div *ngIf="!newBookForm.get('about')!.valid" style="font-size: 12px; color: red">character limit exceeded</div>
+          <br>
+          <button style="margin-top: 10px;" type="submit" [disabled]="!newBookForm.valid">Add Book</button>
+          <p style="font-size: 14px;">All fields are required.</p>
+        </form>
+      </div>
+  </div>

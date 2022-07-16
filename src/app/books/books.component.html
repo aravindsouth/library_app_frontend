@@ -1,0 +1,74 @@
+<!--Navbar-->
+<header class="page-header">
+    <nav class="navbar navbar-expand-lg navbar-dark primary-color fixed-top">
+        <!-- Navbar brand -->
+        <a class="navbar-brand" routerLink="/books" style="margin-left: 10px;">Full Stack Dev</a>
+  
+        <!-- Collapse button -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#basicExampleNav"
+          aria-controls="basicExampleNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+          <!-- Links -->
+          <!-- <div class="ml-auto mr-auto text-center"> 
+           <h3 class="userstyle "> Welcome {{ username }} ! </h3>
+          </div> -->
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" routerLink="/books">Books
+              </a>
+            </li>
+            
+            <li class="nav-item active">
+              <a class="nav-link" routerLink="/addbook" routerLinkActive="active"
+                >Add Book
+              </a>
+            </li>
+            
+            <li class="nav-item active">
+              <!-- <a class="nav-link" routerLink="/login" routerLinkActive="active"
+                >Log In
+              </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link">Sign Up</a>
+            </li> -->
+            <li class="nav-item active">
+              <a class="nav-link" style="cursor:pointer" (click)="logoutUser()">Logout</a>
+            </li>
+          </ul>
+          <!-- Links -->
+        </div>
+        <!-- Collapsible content -->
+      </nav>
+      <!--Navbar-->
+  
+</header>
+<!--Navbar end-->
+<div style="text-align: center; margin-top: 50px;">
+    <h2>Available Books</h2>
+</div>
+<!-- Books body -->
+<div class="container" style="margin-top: 45px;">
+    <div class="card" *ngFor="let i of books" style="border-radius: 15px; border: 2px solid rgb(221, 213, 207); margin-top: 10px; ">
+        <div class="card-body">
+            <h3>{{i.title}}</h3>
+            <p> Author: {{i.author}}</p>
+            <br>
+            <p>About</p>
+            <p>{{i.about}}</p>
+                <button *ngIf="_auth.loggedIn()" style="margin: 10px;">Edit</button>
+                <button *ngIf="_auth.loggedIn()" (click)="deleteBook(i.title)">Delete</button>
+            <!-- <p>{{i.blogContent.slice(528)}}</p> -->
+        </div>
+    </div>
